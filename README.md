@@ -30,7 +30,8 @@ Open index.html in a browser. No package installation or build step is required.
 - `auth.html` uses Supabase Auth for email/password sign-up, sign-in, password reset and Google OAuth.
 - `dashboard.html` requires a signed-in session and allows a user to create/list their own business workspace through RLS.
 - The Supabase publishable key is intentionally public; database access must remain protected by RLS. Never put a service-role key in browser code.
-- Before testing on GitHub Pages, configure Supabase Auth URL settings: Site URL `https://alesk44.github.io/agentforge/` and allowed redirect URLs `https://alesk44.github.io/agentforge/**`. Enable Google provider and enter Google OAuth credentials only in Supabase Dashboard. Email confirmation delivery may require configuring SMTP.
+- Before testing on GitHub Pages, configure Supabase Auth URL settings: Site URL `https://alesk44.github.io/agentforge/` and allowed redirect URLs `https://alesk44.github.io/agentforge/**`. Enable Google provider and enter Google OAuth credentials only in Supabase Dashboard. Google Cloud authorized JavaScript origin: `https://alesk44.github.io`; authorized redirect URI: `https://fopiwzdpvhndgssxoljf.supabase.co/auth/v1/callback`.
+- Supabase's built-in SMTP is for testing only: it sends only to project team addresses and is currently limited to 2 messages/hour. To allow customer sign-up and password reset emails, configure custom SMTP (for example Resend, Brevo or another SMTP provider) before launch.
 - These flows have been implemented in code but still require end-to-end browser testing after Pages is live and Auth providers/redirects are configured.
 
 ## Next milestones
