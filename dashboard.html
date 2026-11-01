@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090d18"><title>Workspace — AgentForge</title><link rel="stylesheet" href="./auth.css"><link rel="stylesheet" href="./dashboard.css"></head>
+<body><main class="dash-shell"><header class="dash-header"><a class="brand" href="./index.html"><span class="mark">A✳</span> agentforge</a><button id="signOut" class="google signout">Sign out</button></header>
+<section class="dash-content"><div class="eyebrow">YOUR WORKSPACE</div><h1 id="welcome">Welcome to AgentForge.</h1><p class="muted">Your account is connected. Create a business workspace to keep your activity organised.</p>
+<div id="status" class="notice" role="status" aria-live="polite" hidden></div>
+<section class="dash-card"><h2>Your businesses</h2><div id="businessList" class="business-list"><p class="muted">Loading…</p></div>
+<form id="businessForm" class="business-form"><label for="businessName">Business name</label><input id="businessName" required maxlength="160" placeholder="e.g. Jersey Creative Studio"><label for="industry">Industry (optional)</label><input id="industry" maxlength="100" placeholder="e.g. Hospitality"><button class="primary" type="submit">Create business workspace</button></form></section>
+<section class="dash-card"><h2>AI agents</h2><p class="muted">Your sample agent workflows are visible on the public page. Live AI execution will be enabled after server-side model and usage controls are configured.</p><a class="google inline-link" href="./index.html#agents">Explore sample agents ↗</a></section>
+</section></main><script type="module" src="./dashboard.js"></script></body></html>
