@@ -20,10 +20,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Run static smoke checks
+        run: python3 scripts/check_site.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "."
   deploy:
