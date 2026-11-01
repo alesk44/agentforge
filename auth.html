@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d18"><title>Sign in — AgentForge</title>
+<link rel="stylesheet" href="./auth.css">
+</head>
+<body>
+<main class="shell">
+  <a class="brand" href="./index.html"><span class="mark">A✳</span> agentforge</a>
+  <section class="panel">
+    <div class="eyebrow">YOUR AI WORKSPACE</div>
+    <h1 id="formTitle">Welcome back.</h1>
+    <p class="muted" id="formIntro">Sign in to continue to your AgentForge workspace.</p>
+    <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+    <form id="authForm">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@company.com">
+      <div id="passwordField">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters">
+      </div>
+      <div id="nameField" hidden>
+        <label for="fullName">Your name (optional)</label>
+        <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="100" placeholder="Your name">
+      </div>
+      <button class="primary" id="submitButton" type="submit">Sign in</button>
+    </form>
+    <button class="google" id="googleButton" type="button">Continue with Google</button>
+    <button class="link" id="forgotButton" type="button">Forgot password?</button>
+    <p class="switch" id="switchLine">New to AgentForge? <a href="?mode=signup" id="switchLink">Create an account</a></p>
+    <p class="fine">By continuing, you agree to use AgentForge responsibly. External actions will require your approval.</p>
+  </section>
+  <a class="back" href="./index.html">← Back to AgentForge</a>
+</main>
+<script type="module" src="./auth.js"></script>
+</body></html>
