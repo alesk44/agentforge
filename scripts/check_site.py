@@ -39,3 +39,11 @@ assert 'updateUser({ password })' in auth_js, 'Password recovery completion miss
 assert 'from("businesses").insert' in dashboard_js and 'from("businesses").select' in dashboard_js, 'Business workspace CRUD missing'
 assert 'sb_publishable_' in auth_js and 'service_role' not in auth_js, 'Publishable key missing or unsafe key reference found'
 print('AgentForge smoke checks passed: landing, auth, dashboard, local assets, auth flows, tenant-scoped workspace and demo disclaimer.')
+
+# Alesk Hub PWA smoke checks
+hub, hub_page = check_page('hub/index.html', {'today', 'overview', 'mail', 'drive', 'calendar', 'connections', 'connections-grid'})
+assert Path('hub/manifest.webmanifest').is_file(), 'Alesk Hub PWA manifest missing'
+assert Path('hub/icon.svg').is_file(), 'Alesk Hub PWA icon missing'
+assert 'Not connected' in hub or 'Non connecté' in hub, 'Provider connection state disclaimer missing'
+assert 'OAuth' in hub, 'OAuth setup disclaimer missing'
+print('Alesk Hub smoke checks passed: PWA page, local assets, navigation and honest provider connection states.')
