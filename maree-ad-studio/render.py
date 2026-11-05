@@ -122,12 +122,12 @@ def render(vertical: bool, output: Path):
     final = output/("maree-jersey-vertical.mp4" if vertical else "maree-jersey-landscape.mp4")
     if has_voice and music.exists():
         run(["ffmpeg","-y","-i",silent,"-i",voice,"-stream_loop","-1","-i",music,
-             "-filter_complex","[1:a]volume=1.0[v];[2:a]volume=0.16,afade=t=out:st=41:d=4[m];[v][m]amix=inputs=2:duration=first:dropout_transition=2[a]",
-             "-map","0:v","-map","[a]","-c:v","copy","-c:a","aac","-shortest",final])
+             "-filter_complex","[1:a]volume=1.0,apad=pad_dur=45[v];[2:a]volume=0.16,afade=t=out:st=41:d=4[m];[v][m]amix=inputs=2:duration=first:dropout_transition=2[a]",
+             "-map","0:v","-map","[a]","-c:v","copy","-c:a","aac","-t",str(DURATION),final])
     elif has_voice:
-        run(["ffmpeg","-y","-i",silent,"-i",voice,"-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-shortest",final])
+        run(["ffmpeg","-y","-i",silent,"-i",voice,"-map","0:v","-map","1:a","-af","apad=pad_dur=45","-c:v","copy","-c:a","aac","-t",str(DURATION),final])
     elif music.exists():
-        run(["ffmpeg","-y","-i",silent,"-stream_loop","-1","-i",music,"-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-shortest",final])
+        run(["ffmpeg","-y","-i",silent,"-stream_loop","-1","-i",music,"-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-t",str(DURATION),final])
     else:
         shutil.copy2(silent, final)
     silent.unlink(missing_ok=True)
