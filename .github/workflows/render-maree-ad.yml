@@ -1,0 +1,37 @@
+name: Render Marée Jersey Ad
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    # Public-repository standard GitHub-hosted runners are free.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install rendering tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg espeak-ng fonts-dejavu-core
+          python -m pip install --upgrade pip
+          pip install -r maree-ad-studio/requirements.txt
+      - name: Render vertical and landscape ads
+        run: |
+          cd maree-ad-studio
+          python render.py --format both --output ../dist
+      - name: Upload MP4 files
+        uses: actions/upload-artifact@v4
+        with:
+          name: maree-jersey-ad
+          path: dist/*.mp4
+          if-no-files-found: error
+          retention-days: 14
