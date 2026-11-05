@@ -1,6 +1,6 @@
 # Footage and rights register — Marée Jersey Film 01
 
-Status: initial sourcing register. No footage is cleared for this commercial advertisement yet.
+Status: this edition uses original generated motion graphics and requires no third-party footage or location filming permissions. The register below applies only if documentary footage or external imagery is added later.
 
 | Shot | Jersey visual needed | Best first source | Rights status | Next action |
 |---|---|---|---|---|
@@ -13,6 +13,9 @@ Status: initial sourcing register. No footage is cleared for this commercial adv
 | Chef / restaurant | Jersey restaurant kitchen | Participating restaurant | Not cleared | Obtain restaurant, staff and premises releases |
 | Delivery | Real handover in Jersey | Participating supplier/restaurant | Not cleared | Confirm route, time evidence and cold-chain handling |
 | App screen inserts | Marée Jersey demo UI | Project-owned designs | Internal demo only | Clearly label demo data; verify live features before public claims |
+
+## Current animated edition
+The current production path avoids external Jersey footage, stock images and filming at heritage/harbour locations. Its illustrated coastline/castle silhouette is an original stylised design, not a documentary image of a specific site. No location filming permission is needed for the original animation. The Marée Jersey logo remains the user's own supplied brand asset and must be inserted unchanged.
 
 ## Key rights finding
 Visit Jersey's Media Asset Library says downloaded assets are to be used solely for promoting Jersey as a tourist destination, in line with the individual usage guidelines; other uses are not permitted without clarification. Marée Jersey's commercial marketplace advert is not automatically covered. Ask Visit Jersey for written permission before using any of its footage.
