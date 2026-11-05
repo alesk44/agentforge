@@ -1,59 +1,48 @@
-# Marée Jersey Ad Studio — zero-budget edition
+# Marée Jersey Ad Studio — zero-budget cinematic animation
 
-A cloud-renderable, no-paid-API video production workspace for Marée Jersey.
+A reusable, no-paid-API motion-design workspace for Marée Jersey.
 
-## Production brief
-The Jersey-specific 45-second film storyboard is in STORYBOARD.md. It follows one catch from the sea to the restaurant: fisherman photographs the fish → species and traceability details → the same catch appears for the chef with a recipe idea → direct order → illustrative under-one-hour delivery sequence → brand reveal.
+## Production direction
+Premium cinematic 2.5D animation: layered Atlantic sea, stylised Jersey coast and harbour/castle silhouette, a fishing boat, fisherman, one recurring fish motif, demo app screens, chef, order notification, delivery handover and brand end-card. Slow camera drift, animated swell, depth layers, restrained navy/teal/coral palette and British English voice-over.
 
-## Current renderer status
-- Renderer updated to a 45-second, seven-scene storyboard animatic.
-- Produces vertical (1080×1920) and landscape (1920×1080) MP4s using Python, Pillow, FFmpeg and eSpeak NG.
-- This remains a motion-graphics animatic, not real video footage. It does not yet ingest live-action clips or generate photorealistic AI video.
-- No paid API, token, GPU or subscription is required for this graphics-only render.
-- The GitHub Actions workflow has not yet been run; no MP4 output has been verified.
+This is original motion graphics, not photorealistic AI video or live-action footage. It avoids third-party footage and location-image permissions by using original stylised illustrations. Jersey is evoked through an original coastline/castle-inspired silhouette, not represented as documentary footage of a precise location.
 
-## Logo asset
-The renderer accepts an exact logo file at assets/logo.png, assets/logo.jpg or assets/logo.jpeg. It scales the image to fit the end-card area without redrawing or recolouring it. The logo image supplied in the conversation has not yet been committed to this repository branch; do not assume it is already included in a render.
+## Current renderer
+- `render.py` creates a 45-second, seven-scene animated film.
+- Exports vertical 1080×1920 and landscape 1920×1080 H.264 MP4.
+- Builds at a smaller internal frame size and scales for delivery.
+- Creates a British English voice-over with eSpeak NG when installed.
+- Creates a separate SRT subtitle file.
+- Uses the exact official logo only if supplied at `assets/logo.png`, `.jpg` or `.jpeg`; it is uniformly scaled, never redrawn or recoloured.
+- If the logo asset is absent, the end-card uses text only. The logo supplied in the conversation is not yet committed to this branch.
+- Optional music can be added as `assets/music.mp3`, but only with documented commercial-use rights. The render works without it.
 
-## Jersey footage and permissions
-Start with the Visit Jersey Media Asset Library: https://business.jersey.com/media/media-tools/asset-library/
-Check the rights and restrictions on each selected asset before using it in a commercial advertisement. Do not assume public visibility grants advertising rights.
+## Free toolchain
+Python 3.11+, Pillow, FFmpeg and eSpeak NG. No paid API, stock footage, GPU, token or recurring subscription is required. GitHub-hosted Actions may run on a public repository's standard hosted runner within the account's applicable usage limits. Repeated renders should respect those limits.
 
-Useful geographic references:
-- Gorey Harbour and Mont Orgueil: https://www.jersey.com/things-to-do/points-of-interest/listings/gorey-harbour/
-- Rozel Bay: https://www.jersey.com/things-to-do/points-of-interest/listings/rozel-bay/
-- Jersey landmarks: https://www.jersey.com/things-to-do/attractions/sights-and-landmarks/
-- Ports of Jersey outlying harbours: https://www.ports.je/jerseymarinas/marinas/berthsoutlyingharbours/
-
-Keep an asset manifest with source URL, creator, licence/permission, attribution and permitted commercial/social-ad use. Prefer genuine Jersey fishing vessels and waterfront footage; do not label generic stock boats as local vessels.
-
-## Truth and brand safeguards
-- App screens are illustrative until the corresponding live features are verified.
-- Keep the same confirmed fish species in the catch, listing, chef and delivery shots.
-- Do not invent a fisherman, vessel name/registration, catch metadata, QR record, verified badge, restaurant partner, price or delivery proof.
-- “Delivered in under an hour” is a campaign scenario until operational performance supports it; it must not be presented as an existing guarantee.
-- No paid API, paid stock subscription, paid GPU or new recurring cost without explicit approval.
-
-## Planned deliverables
-- 45-second vertical master and landscape adaptation.
-- Real Jersey footage, once sourced and commercially cleared.
-- British English voice-over, sound mix and captions.
-- Exact official logo on the final card, unchanged.
-- Asset/licence manifest and QA checklist.
-
-## Run the current animatic
-Requirements: Python 3.11+, FFmpeg, eSpeak NG.
+## Render locally
 ```bash
 pip install -r requirements.txt
+sudo apt-get install ffmpeg espeak-ng fonts-dejavu-core
 python render.py --format both --output dist
 ```
 
 ## GitHub Actions
-1. Keep the repository public to use standard GitHub-hosted Actions runners without charge.
-2. Open Actions → Render Marée Jersey Ad → Run workflow.
-3. Download the maree-jersey-ad artifact after a successful run.
+Open Actions → Render Marée Jersey Ad → Run workflow. Download the `maree-jersey-ad` artifact after a successful run. The workflow has not yet been run in this branch, so no MP4 output is claimed as verified.
 
-No secrets are required for the current graphics-only workflow.
+## Reusable kit
+See:
+- `ANIMATION_KIT.md` — visual system, scene kit, reuse and truth safeguards.
+- `STORYBOARD.md` — 45-second story and shot timing.
+- `ASSET_RIGHTS_REGISTER.md` — rights/release register (not required for the original graphic scenes, but useful for any future external assets).
+
+## Truth and brand safeguards
+- App screens are demo illustrations until corresponding live features are verified.
+- Use the same fish motif through catch, listing, chef and handover.
+- Species, vessel, fisherman, catch metadata, method, QR record, restaurant partner, price and delivery proof are not invented.
+- “UNDER 1 HOUR” is explicitly an illustrative campaign scenario, not an existing guarantee.
+- Never imply cold-chain compliance or real delivery performance without evidence.
+- Official logo remains unchanged.
 
 ## Licence
-The code in this folder is MIT-licensed. Third-party footage, music, fonts and logos retain their own licences.
+The code in this folder is MIT-licensed. The supplied Marée Jersey logo remains the user's brand asset. Optional music/fonts/other assets retain their own licences.
