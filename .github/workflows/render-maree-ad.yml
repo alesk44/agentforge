@@ -32,6 +32,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: maree-jersey-ad
-          path: dist/*.mp4
+          path: |
+            dist/*.mp4
+            dist/*.srt
           if-no-files-found: error
           retention-days: 14
