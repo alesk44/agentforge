@@ -1,52 +1,58 @@
 # Marée Jersey Ad Studio — zero-budget edition
 
-A cloud-renderable, no-paid-API advertising video pipeline for Marée Jersey.
+A cloud-renderable, no-paid-API video production workspace for Marée Jersey.
 
-## What it does
-- Produces a 24-second cinematic vertical ad (9:16) and landscape cut (16:9).
-- Uses Python + Pillow + FFmpeg + eSpeak NG; no AI API, paid token, GPU, or subscription.
-- Supports an optional music bed and the official Marée Jersey logo as a separate, unchanged image asset.
-- Includes a GitHub Actions workflow that renders both MP4s and publishes them as downloadable artifacts.
+## Production brief
+The Jersey-specific 45-second film storyboard is in STORYBOARD.md. It defines the complete journey: real Jersey coastline and fishing boat → fisherman photographs the catch → species and traceability screen → restaurant discovers the same fish and recipe idea → direct order → illustrative under-one-hour delivery sequence → official app/logo reveal.
 
-## Honest limits
-This first version creates animated motion-graphics scenes, not AI-generated photorealistic footage. The current renderer does not yet ingest video clips automatically. The footage list below is the planned next production upgrade; adding clips alone will not change the render:
-- `scene-01.mp4` — Jersey coastline / sea at dawn
-- `scene-02.mp4` — fishing boat / nets
-- `scene-03.mp4` — fresh catch on ice
-- `scene-04.mp4` — chef preparing fish
-- `scene-05.mp4` — plated seafood
-- `scene-06.mp4` — restaurant / island community
+The storyboard is a production specification, not a claim that the pictured app functions or delivery promise are already live.
 
-Optional inputs supported now:
-- `assets/logo.png` — the exact official logo file. It is placed unchanged; never redraw or recolour it.
-- `assets/music.mp3` — music you own or are licensed to use.
+## Current renderer status
+- The existing Python + Pillow + FFmpeg + eSpeak NG renderer still produces the earlier 24-second motion-graphics prototype.
+- It does not yet ingest the real video clips described in STORYBOARD.md.
+- The GitHub Actions workflow has not yet been run; no MP4 output has been verified.
+- It requires no AI API, paid token, GPU or subscription for the current graphics-only render.
 
-The clean, standalone official logo has not yet been added to this branch. A logo sheet/collage is not an acceptable substitute.
+## Jersey footage and permissions
+Start with the Visit Jersey Media Asset Library: https://business.jersey.com/media/media-tools/asset-library/
+It offers public imagery and video for destination promotion, but check the rights and restrictions on each selected asset before using it in a commercial advertisement. Do not assume that a publicly viewable image is automatically cleared for paid advertising.
 
-Do not use stock footage unless its licence permits commercial advertising. Keep a record of each asset's source, licence and creator. Pexels offers free commercial-use content under its licence, but API access requires a free API key; this pipeline does not require one. See https://www.pexels.com/license/ and https://www.pexels.com/api/documentation/.
+Useful geographic references:
+- Gorey Harbour and Mont Orgueil: https://www.jersey.com/things-to-do/points-of-interest/listings/gorey-harbour/
+- Rozel Bay: https://www.jersey.com/things-to-do/points-of-interest/listings/rozel-bay/
+- Jersey landmarks: https://www.jersey.com/things-to-do/attractions/sights-and-landmarks/
+- Ports of Jersey outlying harbours: https://www.ports.je/jerseymarinas/marinas/berthsoutlyingharbours/
 
-## Run locally
+Keep a manifest for every asset: exact source URL, creator, licence/permission, attribution and permitted commercial/social-ad use. Prefer genuine Jersey fishing vessels and waterfront footage; do not label generic stock boats as local vessels.
+
+## Truth and brand safeguards
+- App screens are illustrative until the corresponding live features are verified.
+- Keep the same confirmed fish species in the catch, listing, chef and delivery shots.
+- Do not invent a fisherman, vessel name/registration, catch metadata, QR record, verified badge, restaurant partner, price or delivery proof.
+- “Delivered in under an hour” is a campaign scenario until operational performance supports it; it must not be presented as an existing guarantee.
+- The exact official Marée Jersey logo must be supplied as a clean standalone asset and used unchanged. A collage/logo sheet is not acceptable.
+- No paid API, paid stock subscription, paid GPU or new recurring cost without explicit approval.
+
+## Planned deliverables
+- 45-second vertical master (1080×1920, H.264 MP4).
+- 45-second landscape adaptation (1920×1080, H.264 MP4).
+- Burned-in captions and separate subtitle file.
+- British English voice-over and sound mix.
+- Asset/licence manifest and QA checklist.
+
+## Run the current prototype
 Requirements: Python 3.11+, FFmpeg, eSpeak NG.
 ```bash
 pip install -r requirements.txt
 python render.py --format both --output dist
 ```
 
-## Current status
+## GitHub Actions
+1. Keep the repository public to use standard GitHub-hosted Actions runners without charge.
+2. Open Actions → Render Marée Jersey Ad → Run workflow.
+3. Download the maree-jersey-ad artifact after a successful run.
 
-The code and workflow are committed on the `maree-jersey-ad-studio` branch. The workflow has not yet been run, so no MP4 has been verified. This is a motion-graphics proof of pipeline, not the final photorealistic campaign.
-
-## Run in GitHub
-1. Keep this repository public to use standard GitHub-hosted Actions runners without charge.
-2. Open Actions → **Render Marée Jersey Ad** → Run workflow.
-3. Download the `maree-jersey-ad` artifact when the job finishes.
-
-No secrets are required. No external API is called. Do not add payment tokens or private credentials.
-
-## Creative direction
-Campaign: **THE SEA DOESN'T WAIT.**
-Public copy is British English. Brand line: **MARÉE JERSEY — FROM BOAT TO PLATE.**
-The official logo is an immutable asset and must be supplied as `assets/logo.png`.
+No secrets are required for the current graphics-only workflow.
 
 ## Licence
 The code in this folder is MIT-licensed. Third-party footage, music, fonts and logos retain their own licences.
